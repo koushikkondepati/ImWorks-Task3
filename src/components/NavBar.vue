@@ -16,7 +16,7 @@
           <v-icon>mdi-bell</v-icon>
         </v-btn>
         <v-btn icon>
-          <v-icon>mdi-information</v-icon>
+          <v-icon>mdi-help-circle</v-icon>
         </v-btn>
         <v-avatar>
           <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
