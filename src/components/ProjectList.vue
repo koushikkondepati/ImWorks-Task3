@@ -1,57 +1,63 @@
 <template>
-  <div id="project-card">
-    <v-card>
-      <v-container fluid pa-0>
-        <v-row no-gutters>
-          <v-card-title class="pl-6">
-            <v-icon color="blue">mdi-folder</v-icon>
-            <span>Projects</span>
-          </v-card-title>
-          <v-spacer></v-spacer>
-          <v-card elevation="0" width="80%">
-            <v-card-actions class="d-flex align-center justify-space-between">
-              <v-btn color="success">Create Project</v-btn>
-              <v-input append-icon="mdi-menu-down">Bulk Actions</v-input>
-              <v-input prepend-icon="mdi-magnify" label="Search"></v-input>
-              <v-btn icon outlined> <v-icon>mdi-filter-outline</v-icon></v-btn>
-              <v-btn icon outlined><v-icon>mdi-apps</v-icon></v-btn>
-              <v-btn icon outlined><v-icon>mdi-view-list</v-icon></v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-row>
-        <v-row no-gutters>
-          <v-content class="py-2 "><Tabs /></v-content>
-        </v-row>
-        <v-row class="d-flex justify-center">
-          <v-col>
-            <cards />
-          </v-col>
-          <v-col>
-            <cards />
-          </v-col>
-          <v-col>
-            <cards />
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
-  </div>
+  <v-card height="100vh" style="margin: 10px 10px 0 70px;" elevation="10">
+    <v-row no-gutters>
+      <v-col>
+        <v-card-title>
+          <v-icon left class="blue--text">mdi-folder</v-icon>
+          Projects
+        </v-card-title>
+      </v-col>
+      <v-spacer></v-spacer>
+      <v-row no-gutters class="d-flex justify-space-between mt-6">
+        <v-btn small color="green" dark>Create Project</v-btn>
+
+        <v-btn small outlined>Bulk Actions</v-btn>
+
+        <v-btn small outlined>Search</v-btn>
+
+        <v-btn small outlined>Filter</v-btn>
+
+        <v-icon>mdi-apps</v-icon>
+        <v-icon>mdi-apps</v-icon>
+      </v-row>
+    </v-row>
+    <v-row no-gutters>
+      <v-col sm="6" offset-sm="3"><Tabs /></v-col>
+    </v-row>
+
+    <v-row no-gutters>
+      <Cards />
+    </v-row>
+  </v-card>
 </template>
 
 <script>
 import Tabs from "./Tabs";
-import cards from "./cards";
+import Cards from "./Cards";
 export default {
   components: {
     Tabs,
-    cards
+    Cards
   }
 };
 </script>
 
 <style>
-#project-card {
-  margin: 10px 10px 0 80px;
-  height: 100vh;
+#row1 {
+  height: 50px;
+  width: 100%;
+}
+
+#row2 {
+  height: 30px;
+  width: 100%;
+}
+
+#row3 {
+  height: 200px;
+  width: 100%;
+}
+.v-card {
+  padding-bottom: 250px;
 }
 </style>

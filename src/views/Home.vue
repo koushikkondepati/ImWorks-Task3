@@ -1,3 +1,16 @@
 <template>
-  <h1>This is a home page</h1>
+  <div class="home">
+    <Project />
+  </div>
 </template>
+
+<script>
+import Project from "../components/ProjectList";
+
+export default {
+  name: "Home",
+  components: {
+    Project
+  }
+};
+</script>

@@ -1,51 +1,106 @@
 <template>
-  <div>
-    <v-card class="mx-auto" color="#26c6da" dark max-width="400">
-      <v-card-title>
-        <v-icon large left>
-          mdi-twitter
-        </v-icon>
-        <span class="title font-weight-light">Twitter</span>
-      </v-card-title>
-
-      <v-card-text class="headline font-weight-bold">
-        "Turns out semicolon-less style is easier and safer in TS because most
-        gotcha edge cases are type invalid as well."
-      </v-card-text>
-
-      <v-card-actions>
-        <v-list-item class="grow">
-          <v-list-item-avatar color="grey darken-3">
-            <v-img
-              class="elevation-6"
-              alt=""
-              src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-            ></v-img>
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title>Evan You</v-list-item-title>
-          </v-list-item-content>
-
-          <v-row align="center" justify="end">
-            <v-icon class="mr-1">
-              mdi-heart
-            </v-icon>
-            <span class="subheading mr-2">256</span>
-            <span class="mr-1">·</span>
-            <v-icon class="mr-1">
-              mdi-share-variant
-            </v-icon>
-            <span class="subheading">45</span>
-          </v-row>
-        </v-list-item>
-      </v-card-actions>
-    </v-card>
-  </div>
+  <v-row class="px-4">
+    <v-col cols="3" md="4" v-for="detail in details" :key="detail.value">
+      <v-card height="250px">
+        <v-row no-gutters>
+          <!-- box col -->
+          <v-col cols="12">
+            <v-row no-gutters>
+              <!-- inner col 1 -->
+              <v-col cols="10">
+                <v-card-title
+                  ><v-icon left medium color="blue">mdi-folder</v-icon
+                  >{{ detail.name }}</v-card-title
+                >
+                <v-card-subtitle>{{ detail.time }}</v-card-subtitle>
+              </v-col>
+              <v-spacer></v-spacer>
+              <!-- inner col 2 -->
+              <v-col cols="2" class="mt-6">
+                <v-icon>mdi-checkbox-blank-outline</v-icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+        <hr />
+        <v-row>
+          <v-col cols="8">
+            <v-list dense disabled>
+              <v-list-item-group>
+                <v-list-item v-for="(item, i) in items" :key="i">
+                  <v-list-item-icon>
+                    <v-icon v-text="item.icon"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.text"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-col>
+          <v-col cols="4">
+            <v-progress-circular
+              :size="100"
+              :width="8"
+              :value="detail.value"
+              color="#20C997"
+              class="mt-4"
+            >
+              <center class="black--text">
+                {{ detail.value }}% <br />
+                Progress
+              </center>
+            </v-progress-circular>
+          </v-col>
+        </v-row>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 export default {
-  name: "cards"
+  name: "cards",
+  data: () => ({
+    details: [
+      {
+        name: "Mahila Kisan",
+        time: "10-08-20 to 20-08-21",
+        budget: "40,000",
+        value: 70
+      },
+      {
+        name: "Teach Each",
+        time: "11-08-20 to 21-08-21",
+        budget: "20,000",
+        value: 40
+      },
+      {
+        name: "Mission Home",
+        time: "12-08-20 to 22-08-21",
+        budget: "30,000",
+        value: 90
+      },
+      {
+        name: "Fund Raiser Events",
+        time: "13-08-20 to 23-08-21",
+        budget: "60,000",
+        value: 50
+      }
+    ],
+    items: [
+      { text: "Tags", icon: "mdi-tag" },
+      { text: "Team", icon: "mdi-account" },
+      { text: "Budget", icon: "mdi-wallet" }
+    ]
+  })
 };
 </script>
+
+<style>
+#card {
+  width: 300px;
+  height: 250px;
+}
+</style>

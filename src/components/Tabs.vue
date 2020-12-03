@@ -1,33 +1,16 @@
 <template>
-  <div>
-    <v-btn-toggle
-      v-model="toggle_exclusive"
-      rounded
-      class="d-flex justify-center"
-    >
-      <v-btn>
-        Draft
-      </v-btn>
-      <v-btn>
-        Deployed
-      </v-btn>
-      <v-btn>
-        Complted
-      </v-btn>
-      <v-btn>
-        Archived
-      </v-btn>
-    </v-btn-toggle>
-  </div>
+  <v-tabs grow center-active>
+    <v-tab>Draft</v-tab>
+    <v-tab>Deployed</v-tab>
+    <v-tab>Completed</v-tab>
+    <v-tab>Archived</v-tab>
+  </v-tabs>
 </template>
 
 <script>
 export default {
-  name: "Tabs",
-  data() {
-    return {
-      toggle_exclusive: undefined
-    };
-  }
+  name: "Tabs"
 };
 </script>
+
+<style></style>
