@@ -18,6 +18,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Dashboard.vue")
+  },
+  {
+    path: "/mytasks",
+    name: "MyTasks",
+    component: () => import("../views/MyTasks.vue")
   }
 ];
 

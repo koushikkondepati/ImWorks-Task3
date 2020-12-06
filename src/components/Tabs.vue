@@ -1,5 +1,5 @@
 <template>
-  <v-tabs grow center-active>
+  <v-tabs center-active>
     <v-tab>Draft</v-tab>
     <v-tab>Deployed</v-tab>
     <v-tab>Completed</v-tab>

@@ -2,14 +2,18 @@
   <div>
     <v-app>
       <v-app-bar app color="#FFFFFF">
+        <v-app-bar-nav-icon
+          @click.stop="drawer = !drawer"
+          class="pa-8"
+        ></v-app-bar-nav-icon>
         <v-navigation-drawer
           v-model="drawer"
-          fixed
+          absolute
           permanent
           width="60px"
           height="100vh"
           ><v-app-bar-nav-icon
-            @click="drawer = true"
+            @click.stop="drawer = !drawer"
             class="pa-8"
           ></v-app-bar-nav-icon>
           <v-list nav dense>
@@ -111,10 +115,10 @@ export default {
         url: "/nature"
       },
       {
-        title: "file",
+        title: "mytasks",
         icon: "mdi-file",
-        label: "File",
-        url: "/file"
+        label: "MyTasks",
+        url: "/mytasks"
       },
       {
         title: "settings",
