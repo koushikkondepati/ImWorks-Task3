@@ -1,41 +1,47 @@
 <template>
-  <div id="dashboard-card">
-    <v-card elevation="0">
+  <div>
+    <v-card fluid>
       <v-container fluid px-6>
-        <v-row no-gutters>
+        <v-row dense>
           <v-card-title class="pl-6">
-            <v-icon left color="blue">mdi-view-dashboard</v-icon>
+            <v-icon left color="blue" circle>mdi-view-dashboard</v-icon>
             <span>Dashboard</span>
           </v-card-title>
         </v-row>
-        <v-row>
-          <v-col cols="4" v-for="firstdata in firstdatas" :key="firstdata.id">
-            <v-card height="250px">
-              <v-row no-gutters>
-                <v-col cols="8" class="pa-2">
-                  <v-card-title>{{ firstdata.title1 }}</v-card-title>
-                  <v-card-title>{{ firstdata.value }}%</v-card-title>
-                  <v-card-subtitle>{{ firstdata.subtitle1 }}</v-card-subtitle>
+        <v-row dense>
+          <v-col cols="4" v-for="Card in Cards" :key="Card.id">
+            <v-card elevation="2" height="200px">
+              <v-row dense>
+                <v-col cols="8">
+                  <v-card-title
+                    ><div>{{ Card.title1 }}</div></v-card-title
+                  >
+                  <v-card-title>{{ Card.value }}%</v-card-title>
+                  <v-card-subtitle>{{ Card.subtitle1 }}</v-card-subtitle>
                   <v-card-subtitle>
                     The tasks completion progress is increased to
-                    {{ firstdata.subtitle1 }} out of 100%
+                    {{ Card.value }}% out of 100%
                   </v-card-subtitle>
                 </v-col>
                 <v-col cols="4" class="mt-16">
-                  <v-progress-circular
-                    :size="120"
-                    :width="10"
-                    :value="firstdata.value"
-                    :color="firstdata.color"
-                  >
-                    {{ firstdata.value }}%
-                  </v-progress-circular>
+                  <div class="text-center">
+                    <v-progress-circular
+                      :rotate="270"
+                      :size="110"
+                      :width="9"
+                      :value="Card.value"
+                      :color="Card.color"
+                      rounded
+                    >
+                      {{ Card.value }}%
+                    </v-progress-circular>
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row dense>
           <v-col cols="4" class="mx-auto">
             <Notifications />
           </v-col>
@@ -43,7 +49,7 @@
             <Tasks />
           </v-col>
         </v-row>
-        <v-row>
+        <v-row dense>
           <v-col cols="4" class="mx-auto">
             <Helpdoc />
           </v-col>
@@ -71,7 +77,7 @@ export default {
     Team
   },
   data: () => ({
-    firstdatas: [
+    Cards: [
       {
         id: 1,
         title1: "Completed Tasks",

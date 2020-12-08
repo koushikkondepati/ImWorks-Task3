@@ -1,6 +1,7 @@
 <template>
   <v-card class="pb-0">
     <v-card-title>Help Documentation</v-card-title>
+    <v-divider></v-divider>
     <v-list two-line>
       <v-list-item-group v-model="selected" active-class="pink--text" multiple>
         <template v-for="(item, index) in items">

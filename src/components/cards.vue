@@ -99,8 +99,8 @@ export default {
 </script>
 
 <style>
-#card {
+/* #card {
   width: 300px;
   height: 250px;
-}
+} */
 </style>

@@ -1,95 +1,103 @@
 <template>
-  <div id="MyTasks-card">
-    <v-card elevation="4">
+  <div>
+    <v-card elevation="4" class="ma-2">
       <v-container pa-0>
-        <v-row>
-          <v-col cols="12">
-            <v-toolbar elevation="0">
-              <v-col md="8">
+        <v-row no-gutters>
+          <v-col cols="12" md="12" sm="12" xs="12">
+            <v-toolbar elevation="0" class="ma-0">
+              <v-col cols="6" md="8" sm="6" xs="6">
                 <v-toolbar-title
-                  ><v-icon left color="blue">mdi-format-list-bulleted</v-icon>My
-                  Tasks</v-toolbar-title
+                  ><v-btn icon elevation="6"
+                    ><v-icon color="blue"
+                      >mdi-format-list-bulleted</v-icon
+                    ></v-btn
+                  ><span class="ml-2">My Tasks</span></v-toolbar-title
                 >
               </v-col>
-
-              <v-col md="2">
+              <v-spacer></v-spacer>
+              <v-col cols="2" md="2" sm="2" xs="2" class="d-flex justify-end">
                 <div>
                   <v-text-field
                     label="Search"
                     outlined
                     append-icon="mdi-magnify"
-                    class="mt-7 pa-0"
+                    class="mt-7 pa-0 hidden-sm-and-down"
                   ></v-text-field>
                 </div>
+                <v-btn icon class="hidden-md-and-up"
+                  ><v-icon>mdi-magnify</v-icon></v-btn
+                >
               </v-col>
-              <v-col md="2">
+              <v-col cols="2" md="2" sm="2" xs="2" class="d-flex justify-end">
                 <div>
                   <v-text-field
                     label="Filter"
                     outlined
                     append-icon="mdi-filter-outline"
-                    class="mt-7 pa-0"
+                    class="mt-7 pa-0 hidden-sm-and-down"
                   ></v-text-field>
                 </div>
+                <v-btn icon outlined class="hidden-md-and-up"
+                  ><v-icon>mdi-filter-outline</v-icon></v-btn
+                >
               </v-col>
-
-              <v-icon>mdi-apps</v-icon>
+              <v-btn icon outlined><v-icon>mdi-apps</v-icon></v-btn>
             </v-toolbar>
           </v-col>
         </v-row>
         <v-row no-gutters>
-          <v-col md="4" offset="4">
-            <v-tabs>
+          <v-col md="6" sm="6" xs="4" offset-md="3" offset-sm="3" offset-xs="4">
+            <v-tabs class="d-flex align-center justify-center">
               <v-tab>Overdue</v-tab>
               <v-tab>Current</v-tab>
               <v-tab>Completed</v-tab>
             </v-tabs>
           </v-col>
         </v-row>
-        <v-row no-gutters>
-          <v-col md="8" offset="2">
-            <v-container pa-0>
-              <v-card
-                elevation="4"
-                :class="`pa-3 project ${project.status} mb-2`"
-                v-for="project in projects"
-                :key="project.title"
-              >
-                <v-row class="pa-3">
+        <v-row>
+          <v-col cols="12" md="8" sm="12" xs="12" offset-md="2">
+            <v-card
+              elevation="4"
+              :class="`pa-2 project ${project.status} mb-2 mx-2`"
+              v-for="project in projects"
+              :key="project.title"
+            >
+              <v-row class="pa-2">
+                <v-col cols="8" md="8" sm="8" xs="8">
                   <div>
                     <strong>{{ project.title }}</strong>
+                    <span class="pl-2"
+                      ><v-chip small label :class="`${project.status} caption`">
+                        {{ project.status }}
+                      </v-chip></span
+                    >
                   </div>
-
-                  <div class="text-center px-6">
-                    <v-chip small label :class="`${project.status} caption`">
-                      {{ project.status }}
-                    </v-chip>
-                  </div>
-
-                  <v-spacer></v-spacer>
-
+                </v-col>
+                <v-col cols="4" md="4" sm="4" xs="4" class="d-flex justify-end">
+                  <span>
+                    {{ project.date }}
+                    <v-icon>mdi-dots-vertical</v-icon>
+                  </span>
+                </v-col>
+              </v-row>
+              <!-- <v-row no-gutters class="hidden-md-and-down pa-2">
+                <v-col>
                   <div>
-                    {{ project.date }}<v-icon>mdi-dots-vertical</v-icon>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   </div>
-                </v-row>
-                <v-row no-gutters>
-                  <v-col>
-                    <div>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </div>
-                  </v-col>
-                </v-row>
-                <v-row no-gutters>
-                  <v-col>
-                    <div>
-                      Project Name : Mahila Kisan Sashaktikaran Pariyojana
-                      (MKSP)
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-card>
-              <v-divider></v-divider>
-            </v-container>
+                </v-col>
+              </v-row> -->
+              <v-row class="pa-2">
+                <v-col>
+                  <div>
+                    Project Name :
+                    <span class="hidden-md-and-down"
+                      >Mahila Kisan Sashaktikaran Pariyojana (MKSP)</span
+                    >
+                  </div>
+                </v-col>
+              </v-row>
+            </v-card>
           </v-col>
         </v-row>
       </v-container>
@@ -104,32 +112,27 @@ export default {
       {
         title: "Baseline Survey",
         date: "28/03/2019",
-        status: "Surveys",
-        color: " #2196f3"
+        status: "Surveys"
       },
       {
         title: "Percentage of decrease in plantation cost",
         date: "28/03/2019",
-        status: "Outcomes",
-        color: " #ff5722"
+        status: "Outcomes"
       },
       {
         title: "Percentage of increase in income from new Plantation methods",
         date: "30/03/2019",
-        status: "Outcomes",
-        color: " #ff5722"
+        status: "Outcomes"
       },
       {
         title: "Improvement in the Plantation",
         date: "31/03/2019",
-        status: "Outputs",
-        color: " #4caf50"
+        status: "Outputs"
       },
       {
         title: "Increase in the overall annual income of framers",
-        data: "23/03/2019",
-        status: "Outputs",
-        color: " #4caf50"
+        date: "23/03/2019",
+        status: "Outputs"
       }
     ]
   })
